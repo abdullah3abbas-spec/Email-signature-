@@ -1,64 +1,50 @@
 <!-- ========================================================================
      Gulf Football Federation (GFF) — Bilingual Email Signature
      Production file · fully inline CSS · table-based · ~600px wide
-     COMBINED layout: name & title in TWO COLUMNS (Arabic right / English left),
-     then ONE shared contact list with bilingual labels (Arabic first) — the
-     phone/email/P.O. Box values are not duplicated.
+     LAYOUT (mirrors the Qatar government / CGB house style):
+       - Centered text block on the LEFT: stacked Arabic-over-English pairs
+         (name, then title), followed by the contact values (two phone numbers
+         on one line, then email). No field labels.
+       - A vertical teal divider, then the GFF logo on the RIGHT.
      Logo path "gff-logo.png" resolves inside this /dist folder. For production
      email, host gff-logo.png and replace the src with its full https:// URL.
      ======================================================================== -->
 <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" style="width:600px;max-width:600px;border-collapse:collapse;background-color:#ffffff;font-family:Arial,Helvetica,sans-serif;">
   <tr>
-    <td style="padding:24px 28px 26px 28px;background-color:#ffffff;">
+    <td style="padding:22px 28px;background-color:#ffffff;">
 
-      <!-- ---------- Logo (full-color master lockup, left-aligned) ---------- -->
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
-        <tr>
-          <td style="padding:0;">
-            <img src="gff-logo.png" alt="Gulf Football Federation — الاتحاد الخليجي لكرة القدم" width="280" height="107" style="display:block;width:280px;height:107px;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;" />
-          </td>
-        </tr>
-      </table>
-
-      <!-- ---------- Brand divider (Stricker Teal) ---------- -->
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
-        <tr><td height="16" style="height:16px;line-height:16px;font-size:0;">&nbsp;</td></tr>
-        <tr><td height="2" style="height:2px;line-height:2px;font-size:0;background-color:#49C5B1;">&nbsp;</td></tr>
-        <tr><td height="16" style="height:16px;line-height:16px;font-size:0;">&nbsp;</td></tr>
-      </table>
-
-      <!-- ====== NAME & TITLE — two columns: English (left) | Arabic (right) ====== -->
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
         <tr>
-          <!-- English column (left) -->
-          <td width="50%" valign="top" align="left" style="width:50%;vertical-align:top;text-align:left;">
-            <div dir="ltr" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:22px;font-weight:bold;color:#043D56;">Abdullah Abbas</div>
-            <div dir="ltr" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:18px;color:#34677E;padding-top:3px;">Graphic Designer</div>
-          </td>
-          <!-- Arabic column (right) -->
-          <td width="50%" valign="top" align="right" style="width:50%;vertical-align:top;text-align:right;">
+
+          <!-- ================= TEXT BLOCK (left, centered) ================= -->
+          <td valign="middle" align="center" style="vertical-align:middle;text-align:center;">
+
+            <!-- Name: Arabic over English (brand blue) -->
             <div dir="rtl" style="font-family:Tahoma,Arial,sans-serif;font-size:20px;line-height:26px;font-weight:bold;color:#00558C;">عبدالله عباس</div>
-            <div dir="rtl" style="font-family:Tahoma,Arial,sans-serif;font-size:14px;line-height:19px;color:#00558C;padding-top:3px;">مصمم جرافيك</div>
-          </td>
-        </tr>
-      </table>
+            <div dir="ltr" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:21px;font-weight:bold;color:#00558C;letter-spacing:.4px;">ABDULLAH ABBAS</div>
 
-      <!-- ---------- Divider ---------- -->
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
-        <tr><td height="16" style="height:16px;line-height:16px;font-size:0;">&nbsp;</td></tr>
-        <tr><td height="1" style="height:1px;line-height:1px;font-size:0;background-color:#49C5B1;">&nbsp;</td></tr>
-        <tr><td height="16" style="height:16px;line-height:16px;font-size:0;">&nbsp;</td></tr>
-      </table>
+            <!-- Title: Arabic over English -->
+            <div dir="rtl" style="font-family:Tahoma,Arial,sans-serif;font-size:14px;line-height:20px;color:#043D56;padding-top:6px;">مصمم جرافيك</div>
+            <div dir="ltr" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:18px;color:#34677E;">Graphic Designer</div>
 
-      <!-- ====== SHARED CONTACT DETAILS (bilingual labels, Arabic first) ====== -->
-      <table role="presentation" dir="ltr" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
-        <tr>
-          <td align="left" style="text-align:left;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:23px;color:#043D56;">
-            <span dir="rtl" style="font-family:Tahoma,Arial,sans-serif;color:#34677E;">الجوال</span> <span style="color:#34677E;">| Mobile:</span> <span style="color:#043D56;">+974&nbsp;XXXXXXXX</span><br />
-            <span dir="rtl" style="font-family:Tahoma,Arial,sans-serif;color:#34677E;">الهاتف</span> <span style="color:#34677E;">| Tel:</span> <span style="color:#043D56;">+974&nbsp;XXXXXXXX</span><br />
-            <span dir="rtl" style="font-family:Tahoma,Arial,sans-serif;color:#34677E;">البريد</span> <span style="color:#34677E;">| Email:</span> <a href="mailto:example@gff.org.qa" style="color:#00558C;text-decoration:none;">example@gff.org.qa</a><br />
-            <span dir="rtl" style="font-family:Tahoma,Arial,sans-serif;color:#34677E;">ص.ب</span> <span style="color:#34677E;">| P.O. Box:</span> <span style="color:#043D56;">XXXX - Doha, Qatar</span>
+            <!-- Contact values: two phones on one line, then email -->
+            <div dir="ltr" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:20px;color:#043D56;padding-top:10px;">+974&nbsp;XXXXXXXX&nbsp;/&nbsp;+974&nbsp;XXXXXXXX</div>
+            <div dir="ltr" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:20px;"><a href="mailto:example@gff.org.qa" style="color:#00558C;text-decoration:none;">example@gff.org.qa</a></div>
+
           </td>
+
+          <!-- spacer -->
+          <td width="18" style="width:18px;font-size:0;line-height:0;">&nbsp;</td>
+          <!-- ================= vertical brand divider ================= -->
+          <td width="2" style="width:2px;font-size:0;line-height:0;background-color:#49C5B1;">&nbsp;</td>
+          <!-- spacer -->
+          <td width="18" style="width:18px;font-size:0;line-height:0;">&nbsp;</td>
+
+          <!-- ===================== LOGO (right) ===================== -->
+          <td valign="middle" align="right" width="190" style="vertical-align:middle;text-align:right;width:190px;">
+            <img src="gff-logo.png" alt="Gulf Football Federation — الاتحاد الخليجي لكرة القدم" width="190" height="73" style="display:block;width:190px;height:73px;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;" />
+          </td>
+
         </tr>
       </table>
 

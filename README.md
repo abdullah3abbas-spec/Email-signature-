@@ -74,10 +74,10 @@ The raster/vector exports were rendered on Linux with **Noto Sans Arabic** + **L
 └── README.md
 ```
 
-**Layout:** GFF master logo (left) → teal divider → **name & title with Arabic first, English
-second** → teal divider → a **single shared contact list** with bilingual labels (Arabic first).
-Because the mobile, landline, email and P.O. Box values are identical in both languages, they are
-listed once rather than duplicated.
+**Layout** (mirrors the Qatar government / CGB house style): a **centered text block on the left** —
+stacked Arabic-over-English pairs for the **name** and **job title**, then the contact values (two
+phone numbers on one line, then email, with no field labels) — followed by a **vertical teal
+divider** and the **GFF logo on the right**.
 
 All formats are the **same design** — same logo placement, spacing, colors, hierarchy and
 Arabic-first order.

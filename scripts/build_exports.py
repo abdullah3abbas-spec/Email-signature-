@@ -49,7 +49,7 @@ def build_png_jpg():
     sig = signature_markup()
     doc = (
         "<!doctype html><html><head><meta charset='utf-8'>"
-        "<style>@page{size:600px 470px;margin:0}"
+        "<style>@page{size:600px 240px;margin:0}"
         "html,body{margin:0;padding:0;background:#ffffff}</style>"
         f"</head><body>{sig}</body></html>"
     )
@@ -93,65 +93,52 @@ def build_pdf():
 
 
 def build_svg():
-    """Hand-built vector mirror of the same COMBINED layout.
-    Employee text = real <text> (editable). Official logo embedded as image.
-    Arabic labels/name use dir-isolated tspans; LTR runs stay LTR."""
+    """Hand-built vector mirror of the same layout: centered stacked AR/EN text
+    on the left, a vertical teal divider, and the official logo on the right.
+    Employee text = real <text> (editable). Official logo embedded as image."""
     with open(LOGO, "rb") as f:
         logo_b64 = base64.b64encode(f.read()).decode()
 
-    LEFT = 28
     LATIN = "Arial, 'Liberation Sans', Helvetica, sans-serif"
     ARABIC = "Tahoma, 'Noto Sans Arabic', Arial, sans-serif"
 
-    def text(y, size, color, body, weight="normal", family=LATIN):
-        return (f'<text x="{LEFT}" y="{y}" font-family="{family}" font-size="{size}" '
-                f'font-weight="{weight}" fill="{color}" text-anchor="start" '
-                f'xml:space="preserve">{body}</text>')
+    # Geometry: text column 28..343 (center 186), spacer, divider at x=361,
+    # spacer, logo 381..571 (190 wide).
+    TX = 186          # text-column center (text-anchor middle)
+    DIV_X = 361       # vertical divider
+    LOGO_X, LOGO_W = 381, 190
+    LOGO_H = round(LOGO_W * 107 / 280)  # keep logo aspect ratio -> 73
+    H = 200
 
-    RIGHT = 600 - LEFT  # 572 (Arabic column right edge)
-
-    def rtext(x, y, s, size, color, weight="normal", family=ARABIC):
-        # Right-aligned Arabic (bidi orders RTL); anchor at the right edge.
-        return (f'<text x="{x}" y="{y}" font-family="{family}" font-size="{size}" '
-                f'font-weight="{weight}" fill="{color}" text-anchor="end" '
+    def ctext(y, size, color, s, weight="normal", family=LATIN, ls=None):
+        extra = f' letter-spacing="{ls}"' if ls else ""
+        return (f'<text x="{TX}" y="{y}" font-family="{family}" font-size="{size}" '
+                f'font-weight="{weight}" fill="{color}" text-anchor="middle"{extra} '
                 f'xml:space="preserve">{s}</text>')
-
-    def contact(y, ar_label, en_label, value, value_color=NAVY):
-        # Arabic label first (RTL isolated), then English label, then LTR value.
-        return text(
-            y, 13, NAVY,
-            f'<tspan font-family="{ARABIC}" fill="{STEEL}" direction="rtl">{ar_label}</tspan>'
-            f'<tspan fill="{STEEL}"> | {en_label}: </tspan>'
-            f'<tspan fill="{value_color}">{value}</tspan>',
-        )
 
     parts = []
     parts.append('<?xml version="1.0" encoding="UTF-8"?>')
     parts.append('<svg xmlns="http://www.w3.org/2000/svg" '
                  'xmlns:xlink="http://www.w3.org/1999/xlink" '
-                 'width="600" height="372" viewBox="0 0 600 372" '
+                 f'width="600" height="{H}" viewBox="0 0 600 {H}" '
                  'font-family="Arial, sans-serif">')
-    parts.append('<rect x="0" y="0" width="600" height="372" fill="#ffffff"/>')
-    # Logo (official full-color master lockup)
-    parts.append(f'<image x="{LEFT}" y="24" width="280" height="107" '
+    parts.append(f'<rect x="0" y="0" width="600" height="{H}" fill="#ffffff"/>')
+
+    # ---- Centered stacked text: name, title, contacts ----
+    parts.append(ctext(54, 20, BLUE, "عبدالله عباس", "bold", ARABIC))
+    parts.append(ctext(76, 15, BLUE, "ABDULLAH ABBAS", "bold", LATIN, ls="0.4"))
+    parts.append(ctext(100, 14, NAVY, "مصمم جرافيك", "normal", ARABIC))
+    parts.append(ctext(118, 13, STEEL, "Graphic Designer", "normal", LATIN))
+    parts.append(ctext(148, 13, NAVY, "+974 XXXXXXXX / +974 XXXXXXXX", "normal", LATIN))
+    parts.append(ctext(170, 13, BLUE, "example@gff.org.qa", "normal", LATIN))
+
+    # ---- Vertical brand divider ----
+    parts.append(f'<rect x="{DIV_X}" y="30" width="2" height="148" fill="{TEAL}"/>')
+
+    # ---- Logo (right, vertically centered) ----
+    logo_y = round((H - LOGO_H) / 2)
+    parts.append(f'<image x="{LOGO_X}" y="{logo_y}" width="{LOGO_W}" height="{LOGO_H}" '
                  f'xlink:href="data:image/png;base64,{logo_b64}"/>')
-    # Brand divider under logo
-    parts.append(f'<rect x="{LEFT}" y="147" width="544" height="2" fill="{TEAL}"/>')
-
-    # ---- Name & title: two columns (English left, Arabic right) ----
-    parts.append(text(186, 16, NAVY, "Abdullah Abbas", "bold", LATIN))
-    parts.append(text(206, 13, STEEL, "Graphic Designer", "normal", LATIN))
-    parts.append(rtext(RIGHT, 186, "عبدالله عباس", 20, BLUE, "bold", ARABIC))
-    parts.append(rtext(RIGHT, 208, "مصمم جرافيك", 14, BLUE, "normal", ARABIC))
-
-    # Divider
-    parts.append(f'<rect x="{LEFT}" y="232" width="544" height="1" fill="{TEAL}"/>')
-
-    # ---- Shared contact list (bilingual labels, Arabic first) ----
-    parts.append(contact(264, "الجوال", "Mobile", "+974 XXXXXXXX"))
-    parts.append(contact(288, "الهاتف", "Tel", "+974 XXXXXXXX"))
-    parts.append(contact(312, "البريد", "Email", "example@gff.org.qa", BLUE))
-    parts.append(contact(336, "ص.ب", "P.O. Box", "XXXX - Doha, Qatar"))
 
     parts.append('</svg>')
     out = os.path.join(DIST, "email-signature.svg")
