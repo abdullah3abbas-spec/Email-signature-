@@ -2,9 +2,9 @@
 <!-- ============================================================================
      GULF FOOTBALL FEDERATION (GFF) — BILINGUAL EMAIL SIGNATURE  ·  EDITABLE SOURCE
      ============================================================================
-     COMBINED layout: the Arabic name & title are shown first (readable first),
-     the English name & title second, then ONE shared contact list with bilingual
-     labels (Arabic first) — the phone / email / P.O. Box values are NOT duplicated.
+     COMBINED layout: the name & title sit in TWO COLUMNS (Arabic on the right,
+     English on the left), then ONE shared contact list with bilingual labels
+     (Arabic first) — the phone / email / P.O. Box values are NOT duplicated.
 
      To ship a new employee, edit only the values marked  <!-- EDIT: ... -->.
      The production copy used by email clients is /dist/email-signature.html
@@ -52,18 +52,22 @@
         <tr><td height="16" style="height:16px;line-height:16px;font-size:0;">&nbsp;</td></tr>
       </table>
 
-      <!-- ============ NAME & TITLE — Arabic first, English second ============ -->
+      <!-- ====== NAME & TITLE — two columns: English (left) | Arabic (right) ====== -->
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
         <tr>
-          <td align="left" style="text-align:left;">
-            <!-- EDIT: Arabic name (shown first) -->
-            <div dir="rtl" style="font-family:Tahoma,Arial,sans-serif;font-size:21px;line-height:28px;font-weight:bold;color:#00558C;text-align:left;">عبدالله عباس</div>
+          <!-- English column (left) -->
+          <td width="50%" valign="top" align="left" style="width:50%;vertical-align:top;text-align:left;">
             <!-- EDIT: English name -->
-            <div dir="ltr" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:20px;font-weight:bold;color:#043D56;">Abdullah Abbas</div>
-            <!-- EDIT: Arabic job title -->
-            <div dir="rtl" style="font-family:Tahoma,Arial,sans-serif;font-size:14px;line-height:20px;color:#00558C;text-align:left;padding-top:6px;">مصمم جرافيك</div>
+            <div dir="ltr" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:22px;font-weight:bold;color:#043D56;">Abdullah Abbas</div>
             <!-- EDIT: English job title -->
-            <div dir="ltr" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:18px;color:#34677E;">Graphic Designer</div>
+            <div dir="ltr" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:18px;color:#34677E;padding-top:3px;">Graphic Designer</div>
+          </td>
+          <!-- Arabic column (right) -->
+          <td width="50%" valign="top" align="right" style="width:50%;vertical-align:top;text-align:right;">
+            <!-- EDIT: Arabic name -->
+            <div dir="rtl" style="font-family:Tahoma,Arial,sans-serif;font-size:20px;line-height:26px;font-weight:bold;color:#00558C;">عبدالله عباس</div>
+            <!-- EDIT: Arabic job title -->
+            <div dir="rtl" style="font-family:Tahoma,Arial,sans-serif;font-size:14px;line-height:19px;color:#00558C;padding-top:3px;">مصمم جرافيك</div>
           </td>
         </tr>
       </table>
@@ -82,13 +86,13 @@
         <tr>
           <td align="left" style="text-align:left;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:23px;color:#043D56;">
             <!-- EDIT: mobile number -->
-            <span dir="rtl" style="font-family:Tahoma,Arial,sans-serif;color:#34677E;">الجوال</span> <span style="color:#34677E;">&middot; Mobile:</span> <span style="color:#043D56;">+974&nbsp;XXXXXXXX</span><br />
+            <span dir="rtl" style="font-family:Tahoma,Arial,sans-serif;color:#34677E;">الجوال</span> <span style="color:#34677E;">| Mobile:</span> <span style="color:#043D56;">+974&nbsp;XXXXXXXX</span><br />
             <!-- EDIT: landline number -->
-            <span dir="rtl" style="font-family:Tahoma,Arial,sans-serif;color:#34677E;">الهاتف</span> <span style="color:#34677E;">&middot; Tel:</span> <span style="color:#043D56;">+974&nbsp;XXXXXXXX</span><br />
+            <span dir="rtl" style="font-family:Tahoma,Arial,sans-serif;color:#34677E;">الهاتف</span> <span style="color:#34677E;">| Tel:</span> <span style="color:#043D56;">+974&nbsp;XXXXXXXX</span><br />
             <!-- EDIT: email (update the visible text AND the mailto: link) -->
-            <span dir="rtl" style="font-family:Tahoma,Arial,sans-serif;color:#34677E;">البريد</span> <span style="color:#34677E;">&middot; Email:</span> <a href="mailto:example@gff.org.qa" style="color:#00558C;text-decoration:none;">example@gff.org.qa</a><br />
+            <span dir="rtl" style="font-family:Tahoma,Arial,sans-serif;color:#34677E;">البريد</span> <span style="color:#34677E;">| Email:</span> <a href="mailto:example@gff.org.qa" style="color:#00558C;text-decoration:none;">example@gff.org.qa</a><br />
             <!-- EDIT: P.O. Box + city -->
-            <span dir="rtl" style="font-family:Tahoma,Arial,sans-serif;color:#34677E;">ص.ب</span> <span style="color:#34677E;">&middot; P.O. Box:</span> <span style="color:#043D56;">XXXX - Doha, Qatar</span>
+            <span dir="rtl" style="font-family:Tahoma,Arial,sans-serif;color:#34677E;">ص.ب</span> <span style="color:#34677E;">| P.O. Box:</span> <span style="color:#043D56;">XXXX - Doha, Qatar</span>
           </td>
         </tr>
       </table>
