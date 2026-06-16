@@ -49,7 +49,7 @@ def build_png_jpg():
     sig = signature_markup()
     doc = (
         "<!doctype html><html><head><meta charset='utf-8'>"
-        "<style>@page{size:600px 780px;margin:0}"
+        "<style>@page{size:600px 520px;margin:0}"
         "html,body{margin:0;padding:0;background:#ffffff}</style>"
         f"</head><body>{sig}</body></html>"
     )
@@ -93,57 +93,57 @@ def build_pdf():
 
 
 def build_svg():
-    """Hand-built vector mirror of the same layout.
-    Employee text = real <text> (editable). Official logo embedded as image."""
+    """Hand-built vector mirror of the same COMBINED layout.
+    Employee text = real <text> (editable). Official logo embedded as image.
+    Arabic labels/name use dir-isolated tspans; LTR runs stay LTR."""
     with open(LOGO, "rb") as f:
         logo_b64 = base64.b64encode(f.read()).decode()
 
-    PAD = 28
-    RIGHT = 600 - PAD          # 572  (Arabic right edge)
-    LEFT = PAD                 # 28   (English left edge / logo)
+    LEFT = 28
     LATIN = "Arial, 'Liberation Sans', Helvetica, sans-serif"
     ARABIC = "Tahoma, 'Noto Sans Arabic', Arial, sans-serif"
 
-    def t(x, y, s, size, color, weight="normal", anchor="start", family=LATIN):
-        # Arabic lines use text-anchor="end" (right edge) and let the Unicode
-        # bidi algorithm order the glyphs RTL; LTR runs (numbers, email) are
-        # wrapped in <tspan direction="ltr">. This renders correctly in
-        # browsers, vector editors and librsvg/Pango.
-        return (f'<text x="{x}" y="{y}" font-family="{family}" font-size="{size}" '
-                f'font-weight="{weight}" fill="{color}" text-anchor="{anchor}" '
-                f'xml:space="preserve">{s}</text>')
+    def text(y, size, color, body, weight="normal", family=LATIN):
+        return (f'<text x="{LEFT}" y="{y}" font-family="{family}" font-size="{size}" '
+                f'font-weight="{weight}" fill="{color}" text-anchor="start" '
+                f'xml:space="preserve">{body}</text>')
+
+    def contact(y, ar_label, en_label, value, value_color=NAVY):
+        # Arabic label first (RTL isolated), then English label, then LTR value.
+        return text(
+            y, 13, NAVY,
+            f'<tspan font-family="{ARABIC}" fill="{STEEL}" direction="rtl">{ar_label}</tspan>'
+            f'<tspan fill="{STEEL}"> · {en_label}: </tspan>'
+            f'<tspan fill="{value_color}">{value}</tspan>',
+        )
 
     parts = []
     parts.append('<?xml version="1.0" encoding="UTF-8"?>')
     parts.append('<svg xmlns="http://www.w3.org/2000/svg" '
                  'xmlns:xlink="http://www.w3.org/1999/xlink" '
-                 'width="600" height="540" viewBox="0 0 600 540" '
+                 'width="600" height="420" viewBox="0 0 600 420" '
                  'font-family="Arial, sans-serif">')
-    parts.append('<rect x="0" y="0" width="600" height="540" fill="#ffffff"/>')
-    # Logo (embedded raster of the official full-color master lockup)
+    parts.append('<rect x="0" y="0" width="600" height="420" fill="#ffffff"/>')
+    # Logo (official full-color master lockup)
     parts.append(f'<image x="{LEFT}" y="24" width="280" height="107" '
                  f'xlink:href="data:image/png;base64,{logo_b64}"/>')
     # Brand divider under logo
     parts.append(f'<rect x="{LEFT}" y="147" width="544" height="2" fill="{TEAL}"/>')
 
-    # ---- Arabic block (RTL via bidi, right-aligned at x=RIGHT) ----
-    parts.append(t(RIGHT, 190, "عبدالله عباس", 20, BLUE, "bold", "end", ARABIC))
-    parts.append(t(RIGHT, 214, "مصمم جرافيك", 14, BLUE, "normal", "end", ARABIC))
-    parts.append(t(RIGHT, 246, '<tspan fill="%s">الجوال:</tspan> <tspan fill="%s" direction="ltr">+974 XXXXXXXX</tspan>' % (STEEL, NAVY), 13, NAVY, "normal", "end", ARABIC))
-    parts.append(t(RIGHT, 270, '<tspan fill="%s">الهاتف:</tspan> <tspan fill="%s" direction="ltr">+974 XXXXXXXX</tspan>' % (STEEL, NAVY), 13, NAVY, "normal", "end", ARABIC))
-    parts.append(t(RIGHT, 294, '<tspan fill="%s">البريد الإلكتروني:</tspan> <tspan fill="%s" direction="ltr">example@gff.org.qa</tspan>' % (STEEL, BLUE), 13, BLUE, "normal", "end", ARABIC))
-    parts.append(t(RIGHT, 318, '<tspan fill="%s">ص.ب:</tspan> <tspan fill="%s">XXXX - الدوحة، قطر</tspan>' % (STEEL, NAVY), 13, NAVY, "normal", "end", ARABIC))
+    # ---- Name & title: Arabic first, English second ----
+    parts.append(text(186, 21, BLUE, "عبدالله عباس", "bold", ARABIC))
+    parts.append(text(208, 15, NAVY, "Abdullah Abbas", "bold", LATIN))
+    parts.append(text(232, 14, BLUE, "مصمم جرافيك", "normal", ARABIC))
+    parts.append(text(250, 13, STEEL, "Graphic Designer", "normal", LATIN))
 
-    # Divider between Arabic and English
-    parts.append(f'<rect x="{LEFT}" y="346" width="544" height="1" fill="{TEAL}"/>')
+    # Divider
+    parts.append(f'<rect x="{LEFT}" y="274" width="544" height="1" fill="{TEAL}"/>')
 
-    # ---- English block (LTR, left-aligned) ----
-    parts.append(t(LEFT, 388, "Abdullah Abbas", 20, BLUE, "bold", "start", LATIN))
-    parts.append(t(LEFT, 412, "Graphic Designer", 14, BLUE, "normal", "start", LATIN))
-    parts.append(t(LEFT, 444, '<tspan fill="%s">Mobile:</tspan> <tspan fill="%s">+974 XXXXXXXX</tspan>' % (STEEL, NAVY), 13, NAVY, "normal", "start", LATIN))
-    parts.append(t(LEFT, 468, '<tspan fill="%s">Tel:</tspan> <tspan fill="%s">+974 XXXXXXXX</tspan>' % (STEEL, NAVY), 13, NAVY, "normal", "start", LATIN))
-    parts.append(t(LEFT, 492, '<tspan fill="%s">Email:</tspan> <tspan fill="%s">example@gff.org.qa</tspan>' % (STEEL, BLUE), 13, BLUE, "normal", "start", LATIN))
-    parts.append(t(LEFT, 516, '<tspan fill="%s">P.O. Box:</tspan> <tspan fill="%s">XXXX - Doha, Qatar</tspan>' % (STEEL, NAVY), 13, NAVY, "normal", "start", LATIN))
+    # ---- Shared contact list (bilingual labels, Arabic first) ----
+    parts.append(contact(306, "الجوال", "Mobile", "+974 XXXXXXXX"))
+    parts.append(contact(330, "الهاتف", "Tel", "+974 XXXXXXXX"))
+    parts.append(contact(354, "البريد", "Email", "example@gff.org.qa", BLUE))
+    parts.append(contact(378, "ص.ب", "P.O. Box", "XXXX - Doha, Qatar"))
 
     parts.append('</svg>')
     out = os.path.join(DIST, "email-signature.svg")
