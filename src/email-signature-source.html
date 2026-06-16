@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!-- ============================================================================
+     GULF FOOTBALL FEDERATION (GFF) — BILINGUAL EMAIL SIGNATURE  ·  EDITABLE SOURCE
+     ============================================================================
+     This is the human-friendly, COMMENTED master. To ship a new employee:
+       1. Edit only the values marked  <!-- EDIT: ... -->  below.
+       2. Keep the structure, colors and inline styles unchanged.
+       3. The production copy used by email clients is /dist/email-signature.html
+          (identical markup). Re-run `python3 scripts/build_exports.py` to refresh
+          the PNG / JPG / PDF / SVG exports after changing data.
+
+     LAYOUT (one consistent design, used by every export):
+       • GFF full-color master logo, left-aligned
+       • Stricker-Teal divider
+       • ARABIC block first  (RTL, right-aligned)
+       • Teal divider
+       • ENGLISH block second (LTR, left-aligned)
+
+     BRAND COLORS (GFF Brand Guidelines 2025_V01):
+       #00558C Extra-time Blue  → name, job title, links (primary accent)
+       #49C5B1 Stricker Teal    → dividers
+       #043D56 Corporate Navy   → field values
+       #34677E Steel Blue       → field labels
+
+     FONTS: official ITC Handel Gothic / Codec Pro are not email-safe, so this
+       signature uses email-safe fallbacks:
+       Latin  → Arial, Helvetica, sans-serif
+       Arabic → Tahoma, Arial, sans-serif   (Tahoma shapes Arabic well in Outlook)
+
+     LOGO: src="gff-logo.png" resolves next to the file. For PRODUCTION email,
+       host gff-logo.png on a public https:// URL and replace the src value.
+     ============================================================================ -->
+<html lang="en">
+<head><meta charset="utf-8"><title>GFF Email Signature</title></head>
+<body style="margin:0;padding:24px;background:#f4f6f8;">
+
+<!-- ===== SIGNATURE (copy everything inside this table into your email client) ===== -->
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" style="width:600px;max-width:600px;border-collapse:collapse;background-color:#ffffff;font-family:Arial,Helvetica,sans-serif;">
+  <tr>
+    <td style="padding:24px 28px 26px 28px;background-color:#ffffff;">
+
+      <!-- ---------------------------- LOGO ---------------------------- -->
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+        <tr>
+          <td style="padding:0;">
+            <!-- EDIT (production only): replace src with the hosted logo URL -->
+            <img src="gff-logo.png" alt="Gulf Football Federation — الاتحاد الخليجي لكرة القدم"
+                 width="280" height="107"
+                 style="display:block;width:280px;height:107px;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;" />
+          </td>
+        </tr>
+      </table>
+
+      <!-- ----------------------- BRAND DIVIDER ------------------------ -->
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
+        <tr><td height="16" style="height:16px;line-height:16px;font-size:0;">&nbsp;</td></tr>
+        <tr><td height="2"  style="height:2px;line-height:2px;font-size:0;background-color:#49C5B1;">&nbsp;</td></tr>
+        <tr><td height="18" style="height:18px;line-height:18px;font-size:0;">&nbsp;</td></tr>
+      </table>
+
+      <!-- ====================== ARABIC  (RTL, FIRST) ====================== -->
+      <table role="presentation" dir="rtl" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;direction:rtl;">
+        <tr>
+          <td align="right" style="text-align:right;font-family:Tahoma,Arial,sans-serif;">
+            <!-- EDIT: Arabic name -->
+            <div style="font-family:Tahoma,Arial,sans-serif;font-size:20px;line-height:26px;font-weight:bold;color:#00558C;">عبدالله عباس</div>
+            <!-- EDIT: Arabic job title -->
+            <div style="font-family:Tahoma,Arial,sans-serif;font-size:14px;line-height:20px;color:#00558C;padding-top:2px;">مصمم جرافيك</div>
+          </td>
+        </tr>
+        <tr><td height="10" style="height:10px;line-height:10px;font-size:0;">&nbsp;</td></tr>
+        <tr>
+          <td align="right" style="text-align:right;font-family:Tahoma,Arial,sans-serif;font-size:13px;line-height:22px;color:#043D56;">
+            <!-- EDIT: Arabic mobile  (number kept LTR via dir="ltr") -->
+            <span style="color:#34677E;">الجوال:</span> <span dir="ltr" style="unicode-bidi:embed;color:#043D56;">+974&nbsp;XXXXXXXX</span><br />
+            <!-- EDIT: Arabic landline -->
+            <span style="color:#34677E;">الهاتف:</span> <span dir="ltr" style="unicode-bidi:embed;color:#043D56;">+974&nbsp;XXXXXXXX</span><br />
+            <!-- EDIT: email address (also update the mailto: link) -->
+            <span style="color:#34677E;">البريد الإلكتروني:</span> <a href="mailto:example@gff.org.qa" dir="ltr" style="unicode-bidi:embed;color:#00558C;text-decoration:none;">example@gff.org.qa</a><br />
+            <!-- EDIT: Arabic P.O. Box + city -->
+            <span style="color:#34677E;">ص.ب:</span> <span style="color:#043D56;">XXXX - الدوحة، قطر</span>
+          </td>
+        </tr>
+      </table>
+
+      <!-- ------------------- DIVIDER (Arabic / English) ------------------- -->
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
+        <tr><td height="18" style="height:18px;line-height:18px;font-size:0;">&nbsp;</td></tr>
+        <tr><td height="1"  style="height:1px;line-height:1px;font-size:0;background-color:#49C5B1;">&nbsp;</td></tr>
+        <tr><td height="18" style="height:18px;line-height:18px;font-size:0;">&nbsp;</td></tr>
+      </table>
+
+      <!-- ====================== ENGLISH (LTR, SECOND) ====================== -->
+      <table role="presentation" dir="ltr" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;direction:ltr;">
+        <tr>
+          <td align="left" style="text-align:left;font-family:Arial,Helvetica,sans-serif;">
+            <!-- EDIT: English name -->
+            <div style="font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:26px;font-weight:bold;color:#00558C;">Abdullah Abbas</div>
+            <!-- EDIT: English job title -->
+            <div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:20px;color:#00558C;padding-top:2px;">Graphic Designer</div>
+          </td>
+        </tr>
+        <tr><td height="10" style="height:10px;line-height:10px;font-size:0;">&nbsp;</td></tr>
+        <tr>
+          <td align="left" style="text-align:left;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:22px;color:#043D56;">
+            <!-- EDIT: English mobile -->
+            <span style="color:#34677E;">Mobile:</span> <span style="color:#043D56;">+974&nbsp;XXXXXXXX</span><br />
+            <!-- EDIT: English landline -->
+            <span style="color:#34677E;">Tel:</span> <span style="color:#043D56;">+974&nbsp;XXXXXXXX</span><br />
+            <!-- EDIT: email address (also update the mailto: link) -->
+            <span style="color:#34677E;">Email:</span> <a href="mailto:example@gff.org.qa" style="color:#00558C;text-decoration:none;">example@gff.org.qa</a><br />
+            <!-- EDIT: English P.O. Box + city -->
+            <span style="color:#34677E;">P.O. Box:</span> <span style="color:#043D56;">XXXX - Doha, Qatar</span>
+          </td>
+        </tr>
+      </table>
+
+    </td>
+  </tr>
+</table>
+<!-- ===== END SIGNATURE ===== -->
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Node (only used transiently; build pipeline is Python)
+node_modules/
+package-lock.json
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store

@@ -1,0 +1,10 @@
+{
+  "name": "gff-email-signature",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Gulf Football Federation bilingual email signature + multi-format exports",
+  "scripts": {
+    "build": "python3 scripts/build_exports.py",
+    "logo": "bash scripts/extract-logo.sh"
+  }
+}
